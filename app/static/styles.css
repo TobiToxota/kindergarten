@@ -1,0 +1,246 @@
+.complement-font {
+    color: #000000 !important
+}
+
+.primary-font {
+    color:#251F40 !important
+}
+
+.navbar .text {
+    color: #251F40 !important
+}
+
+@media screen and (max-width: 1200px) {
+    .kindergarten-logo {
+        width: 180px;
+    }    
+}
+
+.popover {
+    max-width: 140px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+    .home-manuel {
+        font-size: small;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .navbar-widescreen {
+    margin-left: 300px;
+    margin-right: 300px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .kindergarten-logo {
+        width: 180px;
+    }    
+}
+
+@media screen and (max-width: 700px) {
+    .kindergarten-logo {
+        width: 150px;
+    }    
+}
+.my-btn {
+    background-color: #F2EBB1; 
+    width: 200px; 
+    height: 60px;
+    color:#251F40;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.btn-radius {
+    border-radius: 20px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;            /* Footer height */
+  }
+
+#content-wrap {
+    padding-bottom: 2.5rem;    /* Footer height */
+}
+
+.my-btn:hover {
+    background-color: #251F40;;
+}
+
+@media screen and (min-width: 1200px) {
+    .headingtable {
+    font-size:xx-large;
+    font-weight: 100;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .headingformenu {
+        text-decoration: underline;
+    }
+
+    .filename {
+        font-size: 2.5vw;
+    }
+    
+}
+
+ @media screen and (max-width: 1200px) {
+    .headingtable {
+        font-size:large;
+        font-weight: 100;
+        }
+ }
+     
+.menuinput {
+    width: fit-content;
+}
+
+.menuinput:focus {
+    border-color: #251F40;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+  }
+
+
+.no-click-button:focus {
+    outline: none !important;
+    border: 0px;
+    box-shadow: none;
+}
+
+.no-click-button:not(.collapsed) {
+    box-shadow: none;
+}
+
+.table-bordered > tbody > tr > td,
+    .table-bordered > thead > tr > td,
+    .table-bordered {
+        border-bottom:0;
+        border-top: 0;
+    }
+
+ul.navbar-nav a:hover { 
+    color: #A89507
+    !important; 
+}
+
+.myinput {
+    width: fit-content;
+}
+
+@media screen and (min-width: 1200px) {
+    .navbar-widescreen {
+        width: 75vw;
+}
+}
+
+
+@media screen and (min-width: 1200px) {
+    .welcome-container {
+        width: 65vw;
+    } 
+
+    .home-container{
+        width: 65vw !important;
+    }
+
+    .flash-container {
+        width: 65vw !important;
+    }
+}
+
+.first-container {
+    margin-top: 10vh;
+    background-color:#e3f2fd;;
+}
+
+.kindergarten-selector {
+    margin-top: 3vh;
+    background-color: #e3f2fd;;
+}
+
+.home-container {
+    background-color: #ffffff;
+    height: fit-content;
+    width: 100%;
+    border-radius: 3px;
+    border: solid #251f4054 1px;
+    color:#251F40 !important;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    min-height: 60px;
+}
+
+.my-shadow {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.btn-light-hover:hover {
+    background-color: #e6e4e4;
+}
+
+.announcement {
+    border:#251f4060 solid 1px;
+    border-radius: 3px;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    background-color: #dff1f546;
+}
+
+.title {
+    text-align: left;
+    font-size: x-large;
+    margin-left: 0.5%;
+    margin-top: 5px;
+}
+
+.date {
+    text-align: right;
+    font-size: large;
+    padding-top: 5px;
+    margin-right: 1%;
+}
+
+.headingline {
+    border-top: #251f4033 1px solid;
+    width: 98%;
+    margin-top: -5px;
+}
+
+.messageannouncement {
+    margin-top: 1%;
+    text-align: left;
+    margin-left: 0.5%;
+}
+    
+/* Color Theme Swatches in Hex */
+.kindergarten-1-hex { color: #251F40; }
+.kindergarten-2-hex { color: #7657FF; }
+.kindergarten-3-hex { color: #5D3BF5; }
+.kindergarten-4-hex { color: #A89507; }
+.kindergarten-5-hex { color: #F2EBB1; }
+
+/* Color Theme Swatches in RGBA */
+.kindergarten-1-rgba { color: rgba(37, 31, 64, 1); }
+.kindergarten-2-rgba { color: rgba(118, 87, 255, 1); }
+.kindergarten-3-rgba { color: rgba(93, 59, 245, 1); }
+.kindergarten-4-rgba { color: rgba(168, 149, 7, 1); }
+.kindergarten-5-rgba { color: rgba(242, 235, 177, 1); }
+
+/* Color Theme Swatches in HSLA */
+.kindergarten-1-hsla { color: hsla(250, 34, 18, 1); }
+.kindergarten-2-hsla { color: hsla(251, 100, 67, 1); }
+.kindergarten-3-hsla { color: hsla(250, 90, 59, 1); }
+.kindergarten-4-hsla { color: hsla(52, 92, 34, 1); }
+.kindergarten-5-hsla { color: hsla(53, 71, 82, 1); }

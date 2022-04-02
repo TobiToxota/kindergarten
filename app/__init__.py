@@ -12,4 +12,4 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/kindergarten.db'
 db = SQLAlchemy(app)
 
 from app.models import Kindergarten, Dish
-
+from app.register import register, registerNewUser
