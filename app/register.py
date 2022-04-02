@@ -18,15 +18,15 @@ def register():
         validator = registerNewUser(db, kindergartenname, email, password, confirmpassword)
         
         if validator != "user created":
-            return render_template("register_error.html", text = validator)
+            return render_template("register/register_error.html", text = validator)
 
         # TODO: Return login() here from login.py
 
-        return render_template("register.html")
+        return render_template("register/register.html")
         
     # user came via GET Request
     else:
-        return render_template("register.html")
+        return render_template("register/register.html")
 
 
 def registerNewUser(db, kindergartenname, email, password, confirmpassword):

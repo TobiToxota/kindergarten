@@ -1,6 +1,6 @@
 from app import app, db
 from flask import session, request, render_template, redirect
-from app.models import Kindergarten, Dish
+from app.models import Kindergarten, Parent
 from app.myhelpers import mailValidater
 from werkzeug.security import check_password_hash
 
@@ -22,14 +22,14 @@ def login():
 
         # check if login workend and if not throw message to user
         if validator != "User successfully logged in":
-            return render_template("login_error.html", text = validator)
+            return render_template("login/login_error.html", text = validator)
 
         # redirect user to the home page
         return redirect("/home")
 
     # user reachead route via get
     else:
-        return render_template("login.html")
+        return render_template("login/login.html")
 
 def loginUser(email, password):
     """Logs a user in
@@ -47,8 +47,8 @@ def loginUser(email, password):
         return "Email is not valid"
 
     # check database for Admins (kindergartens) and for Parents
-    checkAdmins = Kindergarten.query.filter(db.execute("SELECT * FROM kindergartens WHERE email = ?", email)
-    checkParents = db.execute("SELECT * FROM parents WHERE email = ?", email)
+    checkAdmins = Kindergarten.query.filter_by(email=email).all()
+    checkParents = Parent.query.filter_by(email=email).all()
 
     # check if it is an admin or a parent
     if checkAdmins != [] and checkParents == []:
