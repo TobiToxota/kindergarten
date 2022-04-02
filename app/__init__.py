@@ -8,8 +8,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'VERY_BAD_SECRET_KEY'
 
 # initiliaze the database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://database/kindergarten.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/kindergarten.db'
 db = SQLAlchemy(app)
 
-from app import login
+from app.models import Kindergarten, Dish
 
