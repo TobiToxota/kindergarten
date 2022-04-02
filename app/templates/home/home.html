@@ -1,0 +1,458 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Welcome
+{% endblock %}
+{% block script %}
+ 
+<script src="https://cdn.tiny.cloud/1/du3aa4wpgbk90kbnl67az52ywtvt1ph8deu08klwrpkkou11/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
+</script>
+
+
+{% endblock %}
+{% block main %}
+{% with messages = get_flashed_messages() %}  
+{% if messages %}  
+      {% for message in messages %}  
+      <div class="alert alert-info d-flex align-items-center flash-container mx-auto" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+          <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+          <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+        </svg>
+      <div class="ms-3">
+          {{ message }}
+      </div>
+    </div>
+      {% endfor %}  
+{% endif %}  
+{% endwith %} 
+
+
+<div class="container-fluid home-container" name="kindergartenname" id="kindergartenname" style="text-align: left; padding-left: 30px; background-color: #ffffff">
+    <h2 style="margin-top: 4px;"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207l-5-5-5 5V13.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7.207Zm-5-.225C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982Z"/>
+      </svg> Your Kindergarten: {{nameofkindergarten}} </h2>
+</div>
+
+<div class="container-fluid home-container" name="menu" id="menu" style="background-color: #ffffff">
+    <div class="accordion" id="accordionmenu" style="background-color: #ffffff">
+        <div class="accordion-item" style="background-color:#ffffff;; border: 0px">
+          <h2 class="accordion-header" id="headingOne" style="background-color:#ffffff">
+            <button class="accordion-button collapsed no-click-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" 
+                    aria-expanded="false" aria-controls="collapseOne" style="background-color: #ffffff; color: #251F40">
+              <h2><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar2-week" viewBox="0 0 16 16">
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+              </svg>  Menu for the week:</h2>
+            </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="container">
+                        <div class="row headingtable">
+                            <div class="col-sm">
+                                <p class="p-1 headingformenu">Weekday:</p>
+                            </div>
+                            <div class="col-sm">
+                                <p class="p-1">Lunch:</p>
+                            </div>
+                            {% if dessert %}
+                            <div class="col-sm">
+                                <p class="p-1">Dessert:</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <p class="p-1 headingformenu">Monday</p>
+                            </div>
+                            <div class="col-sm" id="lunchmonday" name="lunchmonday">
+                                <p class="p-1">{{menudict["lunchmonday"]}}</p>
+                            </div>
+                            {% if dessert %}
+                            <div class="col-sm" id="dessertmonday" name="dessertmonday">
+                                <p class="p-1">{{menudict["dessertmonday"]}}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="row gy-lg-5">
+                            <div class="col-sm">
+                                <p class="p-1 headingformenu">Tuesday</p>
+                            </div>
+                            <div class="col-sm" id="lunchtuesday" name="lunchtuesday">
+                                <p class="p-1">{{menudict["lunchtuesday"]}}</p>
+                            </div>
+                            {% if dessert %}
+                            <div class="col-sm" id="desserttuesday" name="desserttuesday">
+                                <p class="p-1">{{menudict["desserttuesday"]}}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <p class="p-1 headingformenu">Wednesday</p>
+                            </div>
+                            <div class="col-sm" id="lunchwednesday" name="lunchwednesday">
+                                <p class="p-1">{{menudict["lunchwednesday"]}}</p>
+                            </div>
+                            {% if dessert %}
+                            <div class="col-sm" id="dessertwednesday" name="dessertwednesday">
+                                <p class="p-1">{{menudict["dessertwednesday"]}}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <p class="p-1 headingformenu">Thursday</p>
+                            </div>
+                            <div class="col-sm" id="lunchthursday" name="lunchthursday">
+                                <p class="p-1">{{menudict["lunchthursday"]}}</p>
+                            </div>
+                            {% if dessert %}
+                            <div class="col-sm" id="dessertthursday" name="dessertthursday">
+                                <p class="p-1">{{menudict["dessertthursday"]}}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <p class="p-1 headingformenu">Friday</p>
+                            </div>
+                            <div class="col-sm" id="lunchfriday" name="lunchfriday">
+                                <p class="p-1">{{menudict["lunchfriday"]}}</p>
+                            </div>
+                            {% if dessert %}
+                            <div class="col-sm" id="dessertfriday" name="dessertfriday">
+                                <p class="p-1">{{menudict["dessertfriday"]}}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="d-inline-flex">
+                    {% if role == "admin" %}
+                    <form action="/delete-menu" method="post">
+                    <button type="submit" class="btn btn-warning btn-light-hover btn-radius shadow me-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                          </svg>
+                        Delete
+                      </button>
+                    </form>
+                    
+                    <button type="button" class="btn btn-info btn-light-hover btn-radius shadow" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"></path>
+                        </svg>
+                        Edit
+                      </button>
+                      {% endif %}
+                    </div>
+                    {% if role == "admin" %}
+                      <!-- Modal -->
+                        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                            <div class="modal-content" style="background-color: #f1f1f1; border-radius:20px" >
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel3">Add a new menu</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="/home-edit-menu">
+                                        <div class="container-fluid">
+                                        <div class="row headingtable">
+                                            <div class="col-sm">
+                                                <p class="p-1">Weekday:</p>
+                                            </div>
+                                            <div class="col-sm">
+                                                <p class="p-1">Lunch:</p>
+                                            </div>
+                                            <div class="col-sm">
+                                                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="if your kindergarten doesnt serve dessert, no worries. just dont add anything into this column">
+                                                    <p class="p-1">Dessert:
+                                                        <span class="badge bg-danger">info!</span>
+                                                    </p>
+                                                  </span>
+                                            </div>
+                                        </div>
+                                            <script>
+    
+                                                var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+                                                var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                                                  return new bootstrap.Popover(popoverTriggerEl)
+                                                })
+                                                
+                                                </script>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <p class="p-1">Monday</p>
+                                            </div>
+                                            <div class="col-sm">
+                                                <input class="form-control form-control-sm menuinput mx-auto" type="text" value="" placeholder="lunch" name="lunchmonday">
+                                            </div>
+                                            <div class="col-sm">
+                                                <input class="form-control form-control-sm menuinput mx-auto" type="text" value="" placeholder="dessert" name="dessertmonday">
+                                            </div>
+                                        </div>
+                                        <div class="row gy-lg-5">
+                                            <div class="col-sm">
+                                                <p class="p-1">Tuesday</p>
+                                            </div>
+                                            <div class="col-sm">
+                                                <input class="form-control form-control-sm menuinput mx-auto" type="text" value="" placeholder="lunch" name="lunchtuesday">
+                                            </div>
+                                            <div class="col-sm">
+                                                <input class="form-control form-control-sm menuinput mx-auto" type="text" value="" placeholder="dessert" name="desserttuesday">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <p class="p-1">Wednesday</p>
+                                            </div>
+                                            <div class="col-sm">
+                                                <input class="form-control form-control-sm menuinput mx-auto" type="text" value="" placeholder="lunch" name="lunchwednesday">
+                                            </div>
+                                            <div class="col-sm">
+                                                <input class="form-control form-control-sm menuinput mx-auto" type="text" value="" placeholder="dessert" name="dessertwednesday">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <p class="p-1">Thursday</p>
+                                            </div>
+                                            <div class="col-sm">
+                                                <input class="form-control form-control-sm menuinput mx-auto" type="text" value="" placeholder="lunch" name="lunchthursday">
+                                            </div>
+                                            <div class="col-sm">
+                                                <input class="form-control form-control-sm menuinput mx-auto" type="text" value="" placeholder="dessert" name="dessertthursday">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <p class="p-1">Friday</p>
+                                            </div>
+                                            <div class="col-sm">
+                                                <input class="form-control form-control-sm menuinput mx-auto" type="text" value="" placeholder="lunch" name="lunchfriday">
+                                            </div>
+                                            <div class="col-sm">
+                                                <input class="form-control form-control-sm menuinput mx-auto" type="text" value="" placeholder="dessert" name="dessertfriday">
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-light btn-radius shadow btn-light-hover" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-info btn-radius shadow">Add new menu</button>
+                                </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid home-container" name="menu" id="menu" style="text-align: unset; background-color: #ffffff">
+        <div class="accordion-item collapsed" style="background-color: #ffffff; border: 0px">
+          <h2 class="accordion-header collapsed" id="headingTwo" style="background-color: #ffffff;">
+            <button class="accordion-button collapsed no-click-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" 
+                     aria-expanded="false" aria-controls="collapseTwo" style="background-color: #ffffff; color: #251F40">
+              <h2><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
+                <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
+                <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
+              </svg>  Announcements:</h2>
+            </button>
+            </h2>
+            <div id="collapseTwo" class="accordion collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
+                <div class="accordion-body">
+                    {% set count = 1 %} 
+                    {% for announcement in announcements %}
+                    <div class="container announcement" name="announcement-{{ loop.index }}" id="announcement-{{ loop.index }}">
+                        <div class="row headingtable">
+                            <div class="col title" name="title">
+                                <p>{{announcement.title}}</p>
+                            </div>
+                            <div class="col date"">
+                                <p class="p-1" name="date-{{ loop.index }}" id="date-{{ loop.index }}">{{announcement.date}}</p>
+                            </div>
+                        </div>
+                        <div class="headingline mx-auto">
+                        </div>
+                        <div class="row messageannouncement">
+                            <div class="col"><html>{{announcement.content|safe}}</html></div>
+                        </div>
+                        <div style="margin-bottom: 10px">
+                            {% if role == "admin" %}
+                            <form action="/delete-announcement" method="post">
+                                <button type="submit" name="clicked-btn" value="btn-{{ loop.index }}" class="btn btn-warning btn-light-hover btn-radius shadow" id="btn-{{ loop.index }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                                    </svg>
+                                    <small>Delete this announcement</small>
+                                </button>
+                                <input type="hidden" name="my-date" id="time-{{ loop.index }}" value="">
+                            </form>
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+                    <script>
+                        document.getElementById("time-{{ loop.index}}").value = document.getElementById("date-{{ loop.index }}").innerHTML;
+                        document.getElementById("btn-{{ loop.index }}").addEventListener("click", function() {
+                            document.getElementById("announcement-{{ loop.index }}").hidden = true;
+                            document.getElementById("alert-{{ loop.index }}").removeAttribute("hidden");
+                        })
+                    </script>
+                    
+                    <div class="alert alert-info mx-auto btn-radius" role="alert" style="width: 40%;" id="alert-{{ loop.index }}" hidden>
+                        Your selected announcement was deleted
+                    </div>
+                    {% endfor %}
+                    {% if announcements|length == 0 %}
+                        <p><em style="font-weight: 100;">No announcements have been published so far</em></p>
+                    {% endif %}
+                    {% if role == "admin" %}
+                    <button type="button" class="btn btn-info btn-light-hover btn-radius shadow" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
+                            <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"></path>
+                            <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"></path>
+                            </svg>
+                            Add              
+                      </button>    
+                      {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: #f1f1f1; border-radius:20px" >
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add new announcement</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="post" action="/add-announcement">
+                <div class="container-fluid"></div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Title:</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required name="title">
+                  </div>
+                <textarea id="mytextarea" name="content">Your Content</textarea>   
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light btn-radius shadow btn-light-hover" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-info btn-radius shadow">Add new announcement</button>
+        </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+  <div class="container-fluid home-container" name="menu" id="menu" style="text-align: unset; background-color: #ffffff">
+    <div class="accordion-item collapsed" style="background-color: #ffffff; border: 0px">
+      <h2 class="accordion-header collapsed" id="headingThree" style="background-color: #ffffff;">
+        <button class="accordion-button collapsed no-click-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" 
+                 aria-expanded="false" aria-controls="collapseThree" style="background-color: #ffffff; color: #251F40">
+          <h2><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16">
+            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+            <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"/>
+          </svg>  Docs:</h2>
+        </button>
+        </h2>
+        <div id="collapseThree" class="accordion collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample3">
+            <div class="accordion-body">
+                <div class="container-fluid mb-3">
+                <ul class="list-group">
+                    {% for file in files%}
+                    <div class="list-group-item" style="border: 0px !important; border-bottom:#2a23473f 1px solid !important">
+                        <li class="d-flex justify-content-between align-items-center"><p class="filename">{{file["filename"]}}</p>
+                            <span class="badge bg-info rounded-pill float-end d-none d-sm-block">{{file["dateadded"]}}</span>
+                            <p class="d-block d-sm-none filename">{{file["dateadded"]}}</p>
+                        </li>
+                        <a class="btn btn-primary btn-sm float-end btn-radius" href="/download/{{file["filename"]}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down-fill" viewBox="0 0 16 16">
+                                <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z"/>
+                              </svg>
+                             Download</a>
+                             {% if role == "admin" %}
+                        <form action="/delete" method="post"><button type="submit" name="filenamebutton"  value="{{file["filename"]}}" class="btn btn-warning btn-sm float-end me-2 btn-radius">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              </svg>Delete</button></form>
+                              {% endif %}
+                    </div>
+                    {% endfor %} 
+                </ul>
+                </div>
+                
+                {% if files|length == 0 %}
+                        <p><em style="font-weight: 100;">No documents have been uploaded so far</em></p>
+                {% endif %}
+            
+                {% if role == "admin" %}
+                <button type="button" class="btn btn-info btn-light-hover btn-radius shadow" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16">
+                        <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                        <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"/>
+                    </svg>
+                        Upload            
+                </button> 
+                {% endif %}
+
+                {% if role == "admin" %}
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content" style="background-color: #f1f1f1; border-radius:20px" >
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel2">Upload a new file</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="/upload-file" enctype="multipart/form-data">
+                                <div class="container-fluid"></div>
+                                    <div class="mb-3">
+                                        <label for="formFile" class="form-label">Put your file here:</label>
+                                        <input class="form-control" type="file" id="formFile" name="file">
+                                        <p class="mt-3"><em style="font-weight: 100;">You can only upload .pdf files!</em></p>
+                                    </div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-light btn-radius shadow btn-light-hover" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" vale="Upload" class="btn btn-info btn-radius shadow">Upload File</button>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+    {% if role == "admin" %}
+    <div class="container-fluid text-center mt-md-5 mt-3 text-muted home-manuel">
+        <em><p>Hello, here you can create either a menu for the current calender week.</p>
+        <p>Or you could create a new announcement. Just give it a title and some content and inform the parents about some urgent stuff.<br>
+        If an announcement is not relevant anymore - just delete it!</p>
+        <p>The parents need a document to fill out and hand in? You dont want to print it for everyone and just want to upload it for them?<br>
+        You can! Just upload it in the section "Docs". <br>If its not relevant anymore - just delete it.</p>
+        <h5>You want to invite some parents? Just click in the top navbar on "Invite Parents"</h5></em>
+    {% endif %}
+    </div>
+{% endblock %}

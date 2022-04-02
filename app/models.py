@@ -11,7 +11,7 @@ class Kindergarten(db.Model):
     dishs = db.relationship('Dish', backref='author', lazy=True)
 
     def __repr__(self):
-        return f"User('{self.kindergartenname}', '{self.email}')"
+        return f"Kindergarten('{self.kindergartenname}', '{self.email}')"
 
 
 class Dish(db.Model):
@@ -26,9 +26,10 @@ class Dish(db.Model):
     combined = db.Column(db.String(30), nullable = False)
     dateAdded = db.Column(db.DateTime, nullable = False, default = datetime.now)
     cw = db.Column(db.Integer, nullable = False)
+    deleted = db.Column(db.DateTime, nullable = True)
 
     def __repr__(self):
-        return f"User('{self.dish}', '{self.weekday}', '{self.menutype}')"
+        return f"Dish('{self.dish}', '{self.weekday}', '{self.menutype}')"
 
 
 class Announcement(db.Model):
