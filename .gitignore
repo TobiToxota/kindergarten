@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # database
-database/kindergarten.db
+app/database/kindergarten.db
