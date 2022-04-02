@@ -23,8 +23,8 @@ def menuview(db, user_id):
     # extract every dish or dessert from the database which has the cw and is the newest and only show 1 of each category
     for combined in COMBINEDWEEKDAY:
     
-        extract = db.execute("SELECT dish FROM menu WHERE kindergarten_id = ? AND combined = ? AND cw = ? AND deleted IS NULL ORDER BY dateadded DESC LIMIT 1", user_id, combined, cw)
-        extract = Dish.query.filter_by(id = session["user_id"]).filter_by(combined = combined).filter_by(cw = cw).filter_by(deleted == None).first()
+        # TODO: extract = db.execute("SELECT dish FROM menu WHERE kindergarten_id = ? AND combined = ? AND cw = ? AND deleted IS NULL ORDER BY dateadded DESC LIMIT 1", user_id, combined, cw)
+        extract = Dish.query.filter_by(id = session["user_id"]).filter_by(combined = combined).filter_by(cw = cw).filter_by(deleted == "").first() # type: ignore
 
         # check if there is a dish for that specific day in the database
         if extract == []:
