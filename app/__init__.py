@@ -15,4 +15,4 @@ from app.models import Kindergarten, Dish, Upload, Parent, Announcement
 from app.register import register
 from app.login import login
 from app.home import home, index
-from app.announcements import addAnouncement
+from app.announcements import addAnouncement, deleteAnnouncement

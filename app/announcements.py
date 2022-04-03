@@ -37,7 +37,23 @@ def addAnouncement():
     return redirect("/home")
 
 
-def getannouncements(db, user_id):
+@app.route("/delete-announcement", methods=["POST"])
+@login_required
+def deleteAnnouncement():
+
+    if session["role"] == "parent":
+        return errormessage("You are not allowed to modify content", 400)
+
+    # get the date of the announcement which should be deletet
+    todeletedate = request.form.get("my-date")
+
+    # delete the entry in the database
+    deleteannouncement(db, todeletedate, session["user_id"])
+        
+    return ("", 204)
+
+
+def getannouncements(user_id):
     """Gets all the announcements in a list of ouf a database with the user_id"""
 
     # get the actual kindergarten user
@@ -74,3 +90,17 @@ def createannouncement(title, content, db, user_id):
     db.session.commit()
 
     return newAnnouncement
+
+
+def deleteannouncement(db, date, user_id):
+    """sets the delete status in the db of a announcement to deleted"""
+    
+    # get the current date and time
+    deletedate = datetime.now()
+
+    # update the database
+    announcement = Announcement.query.filter_by(kindergarten_id = user_id).filter_by(dateAdded = date).first()
+    announcement.deleted = deletedate
+    db.session.commit()
+
+    return

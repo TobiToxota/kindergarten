@@ -111,3 +111,6 @@ def editMenu(db, user_id, menudict):
             db.session.commit()
 
     return
+
+
+# TODO: ADD DELETEMENU

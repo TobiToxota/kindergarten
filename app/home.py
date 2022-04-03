@@ -27,7 +27,7 @@ def home():
     mymenuview = menuview(db, session["user_id"],)
 
     # Part 2: Create the announcementview
-    announcements = getannouncements(db, session["user_id"])
+    announcements = getannouncements(session["user_id"])
 
     # Part 3: Create the fileview
     # files = fileview(db, session["user_id"])
