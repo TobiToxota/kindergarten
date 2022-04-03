@@ -11,6 +11,6 @@ app.config['SECRET_KEY'] = 'VERY_BAD_SECRET_KEY'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/kindergarten.db'
 db = SQLAlchemy(app)
 
-from app.models import Kindergarten, Dish
+from app.models import Kindergarten, Dish, Upload, Parent, Announcement
 from app.register import register, registerNewUser
 from app.login import login, loginUser

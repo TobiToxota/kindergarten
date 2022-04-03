@@ -47,7 +47,7 @@ def loginUser(email, password):
         return "Email is not valid"
 
     # check database for Admins (kindergartens) and for Parents
-    checkAdmins = Kindergarten.query.filter_by(email=email).all()
+    checkAdmins = Kindergarten.query.filter_by(email=email).first()
     checkParents = Parent.query.filter_by(email=email).all()
 
     # check if it is an admin or a parent
@@ -67,8 +67,8 @@ def loginUser(email, password):
     else:
         return "There is no user with that mail"
 
-    # check if the password is correct
-    passwordcheck = check_password_hash(check[0]["password"], password)
+        # check if the password is correct
+    passwordcheck = check_password_hash(check.password, password)
     if not passwordcheck:
         return "Password is not correct"
 
@@ -76,11 +76,11 @@ def loginUser(email, password):
 
     # to keep the user logged in, we have to create a session depending on the role
     if role == "admin":
-        session["user_id"] = check[0]["id"]
+        session["user_id"] = check.id
         session["role"] = role
 
     if role == "parent":
-        session["user_id"] = check[0]["kindergarten_id"]
+        session["user_id"] = check.kindergarten_id
         session["role"] = role
 
     return "User successfully logged in"
