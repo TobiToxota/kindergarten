@@ -281,7 +281,7 @@ Welcome
                                 <p>{{announcement.title}}</p>
                             </div>
                             <div class="col date"">
-                                <p class="p-1" name="date-{{ loop.index }}" id="date-{{ loop.index }}">{{announcement.date}}</p>
+                                <p class="p-1" name="date-{{ loop.index }}" id="date-{{ loop.index }}">{{announcement.date.strftime("%m/%d/%Y, %H:%M:%S")}}</p>
                             </div>
                         </div>
                         <div class="headingline mx-auto">
