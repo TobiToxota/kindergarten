@@ -9,6 +9,9 @@ class Kindergarten(db.Model):
     email = db.Column(db.String(120), unique = True, nullable = False)
     password = db.Column(db.String(100), nullable = False)
     dishs = db.relationship('Dish', backref='author', lazy=True)
+    announcements = db.relationship('Announcement', backref='author', lazy=True)
+    uploads = db.relationship('Upload', backref='uploader', lazy=True)
+    parents = db.relationship('Parent', backref='kindergarten', lazy=True)
 
     def __repr__(self):
         return f"Kindergarten('{self.kindergartenname}', '{self.email}')"
@@ -42,6 +45,9 @@ class Announcement(db.Model):
     dateAdded = db.Column(db.DateTime, nullable = False, default = datetime.now)
     deleted = db.Column(db.DateTime)
 
+    def __repr__(self):
+        return f"Announcement('{self.title}', '{self.dateAdded}')"
+
 class Upload(db.Model):
     """representing: id, kindergarten_id, filename, dateadded, deleted"""
     
@@ -50,6 +56,9 @@ class Upload(db.Model):
     filename = db.Column(db.String(200), nullable = False)
     dateAdded = db.Column(db.DateTime, nullable = False, default = datetime.now)
     deleted = db.Column(db.DateTime)
+
+    def __repr__(self):
+        return f"Upload('{self.filename}', '{self.dateAdded}')"
 
 class Parent(db.Model):
     """representing: id, kindergarten_id, email, token, password"""
@@ -60,6 +69,9 @@ class Parent(db.Model):
     token = db.Column(db.String(12), unique = True, nullable = False)
     password = db.Column(db.String(100), nullable = False)
     access = db.Column(db.String(20))
+
+    def __repr__(self):
+        return f"Upload('{self.email}', '{self.kindergarten_id}')"
 
 
     
