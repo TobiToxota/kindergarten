@@ -1,7 +1,8 @@
-from app import app
+from app import app, db
 from flask import session, render_template
-from myhelpers import login_required
-from models import Kindergarten
+from app.models import Kindergarten, Dish, Announcement, Upload
+from app.menu import menuview
+from app.myhelpers import login_required
 
 @app.route("/", methods=["GET"])
 def index():
@@ -24,12 +25,14 @@ def home():
     mymenuview = menuview(db, session["user_id"],)
 
     # Part 2: Create the announcementview
-    announcements = getannouncements(db, session["user_id"])
+    # announcements = getannouncements(db, session["user_id"])
 
     # Part 3: Create the fileview
-    files = fileview(db, session["user_id"])
+    # files = fileview(db, session["user_id"])
 
     menudict = mymenuview[0]
     dessert = mymenuview[1]
         
-    return render_template("home/home.html", nameofkindergarten = mykindergarten["kindergartenname"], menudict = menudict, dessert = dessert, announcements = announcements, files = files, role = session["role"])
+    # return render_template("home/home.html", nameofkindergarten = mykindergarten["kindergartenname"], menudict = menudict, dessert = dessert, announcements = announcements, files = files, role = session["role"])
+    return render_template("home/home.html", nameofkindergarten = mykindergarten, menudict = menudict, dessert = dessert, role = session["role"])
+

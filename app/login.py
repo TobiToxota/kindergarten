@@ -1,4 +1,4 @@
-from app import app, db
+from app import app
 from flask import session, request, render_template, redirect
 from app.models import Kindergarten, Parent
 from app.myhelpers import mailValidater
@@ -47,17 +47,17 @@ def loginUser(email, password):
         return "Email is not valid"
 
     # check database for Admins (kindergartens) and for Parents
-    checkAdmins = Kindergarten.query.filter_by(email=email).first()
-    checkParents = Parent.query.filter_by(email=email).all()
+    checkAdmins = Kindergarten.query.filter_by(email = email).first()
+    checkParents = Parent.query.filter_by(email = email).first()
 
     # check if it is an admin or a parent
-    if checkAdmins != [] and checkParents == []:
+    if checkAdmins != None and checkParents == None:
 
         # it is an kindergarten
         role = "admin"
         check = checkAdmins
 
-    elif checkParents != [] and checkAdmins == []:
+    elif checkParents != None and checkAdmins == None:
         
         # it is a parent
         role = "parent"

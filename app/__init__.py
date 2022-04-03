@@ -14,3 +14,4 @@ db = SQLAlchemy(app)
 from app.models import Kindergarten, Dish, Upload, Parent, Announcement
 from app.register import register, registerNewUser
 from app.login import login, loginUser
+from app.home import home, menuview
