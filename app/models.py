@@ -27,7 +27,7 @@ class Dish(db.Model):
     weekday = db.Column(db.String(20), nullable = False)
     menutype = db.Column(db.String(20), nullable = False)
     combined = db.Column(db.String(30), nullable = False)
-    dateAdded = db.Column(db.String(20), nullable = False, default = datetime.now)
+    dateAdded = db.Column(db.DateTime, nullable = False, default = datetime.now)
     cw = db.Column(db.Integer, nullable = False)
     deleted = db.Column(db.String(20), nullable = True)
 

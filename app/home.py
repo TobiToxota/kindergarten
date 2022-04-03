@@ -12,7 +12,8 @@ def index():
         return render_template("login/login.html")
     
     return home()
-    
+
+
 @app.route("/home", methods=["GET"])
 @login_required
 def home():
