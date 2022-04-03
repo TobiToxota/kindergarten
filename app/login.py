@@ -84,3 +84,14 @@ def loginUser(email, password):
         session["role"] = role
 
     return "User successfully logged in"
+
+
+@app.route("/logout")
+def logout():
+    """Log user out"""
+
+    # Forget any user_id
+    session.clear()
+
+    # Redirect user to login form
+    return redirect("/")
