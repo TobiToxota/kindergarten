@@ -68,7 +68,7 @@ def deleteUpload():
     if fileDeleteable(filename, session["user_id"]):
         deleteFile(filename, session["user_id"])
         flash("Your file was succesufully deleted")
-        redirect ("/home")
+        return redirect ("/home")
 
     return errormessage("Something went wrong", 400)
     
@@ -153,18 +153,25 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def deleteFile(db, filename, user_id):
+def deleteFile(filename, user_id):
     """sets the delete status for a file in the database"""
 
     # create the current date
     date = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
 
-    db.execute("UPDATE uploads SET deleted = ? WHERE filename = ? AND kindergarten_id = ?", date, filename, user_id)
+    # delete file
+    filetodelete = Upload.query.filter_by(filename = filename).filter_by(kindergarten_id = user_id).first()
+    filetodelete.deleted = datetime.now()
+    db.session.commit()
 
-def fileDeleteable(db, filename, user_id):
+    return
+
+
+def fileDeleteable(filename, user_id):
     """checks if a file is deleteable"""
 
-    if not db.execute("SELECT * FROM uploads WHERE filename = ? AND kindergarten_id = ? and deleted IS NULL", filename, user_id) == []:
+    if not Upload.query.filter_by(filename = filename, kindergarten_id = user_id).filter(Upload.deleted.is_(None)).first == None:
+        
         return True
     
     else:
