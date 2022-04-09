@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Error
+{% endblock %}
+{% block script %}
+ {% endblock %}
+{% block main %}
+<div class="jumbotron d-flex align-items-center" style="min-height: 60vh;">
+    <div class="container-fluid mw-50" style="max-width: 80%;">
+      <div class="alert alert-primary" role="alert">
+        <h4 class="alert-heading">We are really sorry!</h4>
+        <p>Something went wrong there</p>
+        <hr>
+        <p class="mb-0">{{message}}</p>
+      </div>
+      <button type="button" class="btn btn-outline-info mt-3" value="Go back!" onclick="history.back()" style="border:none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-backward-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.79-2.907L8.5 7.028V5.5a.5.5 0 0 0-.79-.407L5 7.028V5.5a.5.5 0 0 0-1 0v5a.5.5 0 0 0 1 0V8.972l2.71 1.935a.5.5 0 0 0 .79-.407V8.972l2.71 1.935A.5.5 0 0 0 12 10.5v-5a.5.5 0 0 0-.79-.407z"></path>
+        </svg>
+        <em>Get back to where you came from</em>
+      </button>
+  </div>
+</div>
+
+{% endblock %}

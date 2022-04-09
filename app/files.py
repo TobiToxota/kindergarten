@@ -27,11 +27,11 @@ def upload_File():
 
     file = request.files
 
-    validator = isValid(file, db, session["user_id"])
+    validator = isValid(file, session["user_id"])
     if not validator[0]:
         return errormessage(validator[1], 400)
 
-    uploadFile(session["user_id"], file, app, db)
+    uploadFile(session["user_id"], file)
     flash("File was successfully uploaded to the server (:")
     return redirect("/home")
 
@@ -43,7 +43,7 @@ def downloadFile(filename):
     if isFileavailabe(filename, session["user_id"]):
         path = os.path.join("upload", str(session["user_id"]))
         print(path)
-        return send_from_directory(path, filename, as_attachment=True)
+        return send_from_directory(path, filename)
 
     else:
         return errormessage("Something went wrong", 400)
@@ -73,9 +73,9 @@ def deleteUpload():
     return errormessage("Something went wrong", 400)
     
 
-def uploadFile(user_id, file, app):
+def uploadFile(user_id, file):
 
-    UPLOAD_FOLDER = "/upload/" + str(user_id) + "/"
+    UPLOAD_FOLDER = "app/upload/" + str(user_id) + "/"
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
     file = request.files['file']
@@ -84,7 +84,7 @@ def uploadFile(user_id, file, app):
     filename = secure_filename(file.filename)
 
     # create the parent folder
-    parent_dir = "upload"
+    parent_dir = "app/upload"
     path = os.path.join(parent_dir, str(user_id))
 
     # check if the folder exists, if not create it
@@ -96,6 +96,9 @@ def uploadFile(user_id, file, app):
 
     # insert the upload into the database
     upload = Upload(kindergarten_id = user_id, filename = filename)
+    db.session.add(upload)
+    db.session.commit()
+
 
     return "File Uploaded"
 
@@ -119,7 +122,8 @@ def isValid(file, user_id):
         return False, message
 
     # make sure there is not a file allready with that filename
-    if not db.execute("SELECT * FROM uploads WHERE kindergarten_id = ? AND filename = ? AND deleted IS NULL", user_id, file.filename) == []:
+    print(Upload.query.filter_by(filename= file.filename).first())
+    if not Upload.query.filter_by(filename= file.filename).first() == None:
         message = "There is allready a file with that name uploaded, delete it first or upload a file with a diffrent name"
         return False, message
     
@@ -128,7 +132,8 @@ def isValid(file, user_id):
 def fileview(db, user_id):
     """this function gets all the files a user has"""
 
-    files = db.execute("SELECT * FROM uploads where kindergarten_id = ? AND deleted IS NULL", user_id)
+    files = Upload.query.filter_by(kindergarten_id = user_id).filter(Upload.deleted.is_(None)).all()
+    print(files)
 
     return files
 
@@ -165,10 +170,10 @@ def fileDeleteable(db, filename, user_id):
     else:
         return False
         
-def isFileavailabe(db, filename, user_id):
+def isFileavailabe(filename, user_id):
     """checks if a File is there to be downloaded"""
     
-    if not db.execute("SELECT * FROM uploads WHERE filename = ? AND kindergarten_id = ? and deleted IS NULL", filename, user_id) == []:
+    if not Upload.query.filter_by(filename = filename, kindergarten_id = user_id).filter(Upload.deleted.is_(None)).first == None:
         return True
     
     else:

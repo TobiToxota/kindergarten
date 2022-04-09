@@ -380,9 +380,9 @@ Welcome
                 <ul class="list-group">
                     {% for file in files%}
                     <div class="list-group-item" style="border: 0px !important; border-bottom:#2a23473f 1px solid !important">
-                        <li class="d-flex justify-content-between align-items-center"><p class="filename">{{file["filename"]}}</p>
-                            <span class="badge bg-info rounded-pill float-end d-none d-sm-block">{{file["dateadded"]}}</span>
-                            <p class="d-block d-sm-none filename">{{file["dateadded"]}}</p>
+                        <li class="d-flex justify-content-between align-items-center"><p class="filename">{{file.filename}}</p>
+                            <span class="badge bg-info rounded-pill float-end d-none d-sm-block">{{file.dateAdded.strftime("%m/%d/%Y, %H:%M:%S")}}</span>
+                            
                         </li>
                         <a class="btn btn-primary btn-sm float-end btn-radius" href="/download/{{file["filename"]}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down-fill" viewBox="0 0 16 16">

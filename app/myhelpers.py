@@ -24,4 +24,4 @@ def login_required(f):
 def errormessage(message, code=400):
     """give the user an error message"""
 
-    return render_template("error.html", message=message), 400
+    return render_template("/error/error.html", message=message), 400
