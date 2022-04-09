@@ -1,8 +1,10 @@
+import imp
 from app import app, db
 from flask import request, render_template
 from werkzeug.security import generate_password_hash
 from app.myhelpers import mailValidater
 from app.models import Kindergarten
+from app.login import login
 
 @app.route("/register", methods=["GET" , "POST"])
 def register():
@@ -20,7 +22,7 @@ def register():
         if validator != "user created":
             return render_template("register/register_error.html", text = validator)
 
-        # TODO: Return login() here from login.py
+        return login()
 
         return render_template("register/register.html")
         

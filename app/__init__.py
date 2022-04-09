@@ -17,3 +17,4 @@ from app.login import login
 from app.home import home, index
 from app.announcements import addAnouncement, deleteAnnouncement
 from app.files import deleteUpload, upload_File, downloadFile, deleteUpload
+from app.parents import inviteParents, registerParents

@@ -3,7 +3,6 @@ from datetime import datetime
 from flask import redirect, render_template, request, session, flash, url_for, send_from_directory
 from genericpath import isfile
 from importlib.resources import path
-from operator import truediv
 import os
 from werkzeug.utils import secure_filename
 

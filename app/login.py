@@ -1,8 +1,12 @@
+# import libs
 from app import app
 from flask import session, request, render_template, redirect
+from werkzeug.security import check_password_hash
+
+# import .py from app
 from app.models import Kindergarten, Parent
 from app.myhelpers import mailValidater
-from werkzeug.security import check_password_hash
+
 
 @app.route("/login", methods=["POST", "GET"])
 def login():

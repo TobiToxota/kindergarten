@@ -67,11 +67,11 @@ class Parent(db.Model):
     kindergarten_id = db.Column(db.Integer, db.ForeignKey('kindergarten.id'), nullable = False)
     email = db.Column(db.String(120), unique = True, nullable = False)
     token = db.Column(db.String(12), unique = True, nullable = False)
-    password = db.Column(db.String(100), nullable = False)
+    password = db.Column(db.String(100))
     access = db.Column(db.String(20))
 
     def __repr__(self):
-        return f"Upload('{self.email}', '{self.kindergarten_id}')"
+        return f"Parent('{self.email}', '{self.kindergarten_id}')"
 
 
     
