@@ -2,7 +2,7 @@
  
 <P>final project for cs50x https://cs50.harvard.edu/x/2022/</p>
 
-<p>You can find the curren main branch deployed on https://kindgrt.uber.space/</p>
+<p>You can find the current main branch deployed on https://kindgrt.uber.space/</p>
 
 <h2>About the web application:</h2>
 <h4>An application for informing the parents of children within a kindergarten:</h4>
