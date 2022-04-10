@@ -14,6 +14,7 @@
 
 ---
 <h3>Porpuse of this web application:</h3> Because most kindergartens have a static website and only really expensive kindergartens with a huge budget have applications which are mostly way more packed. I think the basic featureset of this app would be really beneficial for kindergartens (No need to print out handouts and hangouts) and for the parents (Overall planning for the week and just beeing informed)
+
 ---
 
 <h2>Dependencies</h2> 
@@ -24,9 +25,15 @@
   </ul>    
 
 ---
+
 <h3> How to run the dev environment:</h3>
-first you need to 
-     pip install flask
+<em>pip install flask</em><br>
+<em>pip install flask-sqlalchemy</em><br>
+<em>python3</em><br>
+<em>from app import db</db><br>
+<em>db.create_all()</db><br>
+close python3 (ctrl+d)<br>
+<em>flask run</em><br>
 
 ---
 
