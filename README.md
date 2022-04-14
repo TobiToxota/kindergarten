@@ -36,6 +36,7 @@
 <em>db.create_all()</db><br>
 close python3 (ctrl+d)<br>
 <em>flask run</em><br>
+<em><b>You also need a tiny MCE account and add your domain to the trusted domains</b></em>
 
 ---
 
